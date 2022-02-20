@@ -11,38 +11,29 @@ function computerPlay(){
 function round(playerSelection,computerSelection){
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-    if((playerSelection === "rock" && computerSelection == "rock") || (playerSelection === "paper" && computerSelection == "paper") ||(playerSelection === "scissors" && computerSelection == "scissors")){
-        return "tie";
-    }else if((playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "papar") || (playerSelection === "rock" && computerSelection === "scissors")){
-        return "player won";
-    }else if((computerSelection === "paper" && playerSelection === "rock") || (computerSelection === "scissors" && playerSelection === "papar") || (computerSelection === "rock" && playerSelection === "scissors")){
-        return "computer won";
-    }
-}
-function play(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let player;
-    let computer;
-    for(let i = 0; i<5 ;i++){
-        player = window.prompt();
-        computer = computerPlay();
-        console.log("computer chose : "+computer);
-        console.log(round(player,computer));
-        if(round(player,computer) === "player won"){
-            playerScore++;
-        }else if(round(player,computer) === "computer won"){
-            computerScore++;
-        }
-    }
-    console.log("player's score is : "+playerScore);
-    console.log("computer's score is : "+computerScore);
-    if(playerScore > computerScore){
-        console.log("player won");
-    }else if(computerScore > playerScore){
-        console.log("computer won");
+    if(playerSelection == computerSelection){
+        return "tie"
+    }else if((computerSelection == "rock" && playerSelection == "scissors") || (computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissors" && playerSelection == "paper")){
+        return "computer won"
     }else{
-        console.log("tie");
+        return "player won"
     }
 }
-play();
+const buttons = document.querySelectorAll('button');
+const p = document.getElementsByTagName("p");
+let computer
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {  
+        computer = computerPlay()
+        if(button.id == 1){
+            p[0].innerHTML = round('rock',computer)
+            p[1].innerHTML = "computer chose "+computer
+        }else if(button.id == 2){
+            p[0].innerHTML = round('paper',computer)
+            p[1].innerHTML = "computer chose "+computer
+        }else if(button.id == 3){
+            p[0].innerHTML = round('scissors',computer)
+            p[1].innerHTML = "computer chose "+computer
+        }
+    });
+  });
