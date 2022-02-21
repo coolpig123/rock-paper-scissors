@@ -19,21 +19,48 @@ function round(playerSelection,computerSelection){
         return "player won"
     }
 }
-const buttons = document.querySelectorAll('button');
+const buttons = document.getElementsByClassName('btn');
+const buttonsTwo = document.getElementsByClassName('btnTwo');
 const p = document.getElementsByTagName("p");
 let computer
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {  
+for(let i = 0;i< buttons.length;i++){
+    buttons[i].addEventListener('click', () => {  
         computer = computerPlay()
-        if(button.id == 1){
+        for(let k = 0;k<buttons.length;k++){
+            if(k == i){
+                buttons[k].style.backgroundColor = 'Red'
+            }else {
+                buttons[k].style.backgroundColor = 'Blue'
+            }
+        }
+        if(buttons[i].id == 1){
+            for(let j = 0;j< buttonsTwo.length;j++){
+                if(buttonsTwo[j].innerHTML == computer){
+                    buttonsTwo[j].style.backgroundColor = 'Red'
+                }else {
+                    buttonsTwo[j].style.backgroundColor = 'Blue'
+                }
+            }
             p[0].innerHTML = round('rock',computer)
-            p[1].innerHTML = "computer chose "+computer
-        }else if(button.id == 2){
+        }else if(buttons[i].id == 2){
+            for(let j = 0;j< buttonsTwo.length;j++){
+                if(buttonsTwo[j].innerHTML == computer){
+                    buttonsTwo[j].style.backgroundColor = 'Red'
+                }else {
+                    buttonsTwo[j].style.backgroundColor = 'Blue'
+                }
+            }
             p[0].innerHTML = round('paper',computer)
-            p[1].innerHTML = "computer chose "+computer
-        }else if(button.id == 3){
+        }else if(buttons[i].id == 3){
+            for(let j = 0;j< buttonsTwo.length;j++){
+                if(buttonsTwo[j].innerHTML == computer){
+                    buttonsTwo[j].style.backgroundColor = 'Red'
+                }else {
+                    buttonsTwo[j].style.backgroundColor = 'Blue'
+                }
+            }
             p[0].innerHTML = round('scissors',computer)
-            p[1].innerHTML = "computer chose "+computer
         }
     });
-  });
+}
+    
